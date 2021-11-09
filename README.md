@@ -4,6 +4,9 @@ Entropy
 
 Team Members:
 Allen Wang
-Shanjida
+Shanjida Khatun
 
 How to access project demo: TODO
+
+Run solr_indexer.py to populate Apache Solr with entries
+Run main.py to query
