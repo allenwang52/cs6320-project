@@ -41,9 +41,13 @@ def get_features(id, sentence):
     holonyms = []
     for word in words:
         for synset in wn.synsets(word):
-            hypernyms.extend([s.lemma_names() for s in synset.hypernyms()])
-            hyponyms.extend([s.lemma_names() for s in synset.hyponyms()])
-            meronyms.extend([s.lemma_names() for s in synset.part_meronyms()])
-            holonyms.extend([s.lemma_names() for s in synset.part_holonyms()])
+            for s in synset.hypernyms():
+                hypernyms.extend(s.lemma_names())
+            for s in synset.hyponyms():
+                hyponyms.extend(s.lemma_names())
+            for s in synset.part_meronyms():
+                meronyms.extend(s.lemma_names())
+            for s in synset.part_holonyms():
+                holonyms.extend(s.lemma_names())
 
     return NLPFeatures(id, words, sentence, lemmas, stems, tags, dependency_parse_tree, hypernyms, hyponyms, meronyms, holonyms)

@@ -40,14 +40,14 @@ for file in os.listdir():
             article = sent_tokenize(f.read())
             for sentence in article:
                 features = feature_extraction.get_features(id, sentence)
-                article_features.append(NLPFeatures(features.id, features.words, features.sentences, features.lemmas, features.stems, features.tags, features.parse_tree, features.hypernyms, features.hyponyms, features.meronyms, features.holonyms))
+                article_features.append(NLPFeatures(features.id, features.words, features.sentence, features.lemmas, features.stems, features.tags, features.parse_tree, features.hypernyms, features.hyponyms, features.meronyms, features.holonyms))
     break
 
 article_info = [dict() for x in range(len(article_features))]
 for i, article in enumerate(article_features):
     article_info[i]["id"] = article.id + "_" + str(i)
     article_info[i]["words"] = article.words
-    article_info[i]["sentences"] = article.sentences
+    article_info[i]["sentence"] = article.sentence
     article_info[i]["lemmas"] = article.lemmas
     article_info[i]["stems"] = article.stems
     article_info[i]["tags"] = article.tags

@@ -33,15 +33,20 @@ with open(file_path, encoding="utf8") as f:
     question_list = f.read().splitlines()
 
     for question in question_list:
+        print("\nQuestion: {0}".format(question))
         features = feature_extraction.get_features('', question)
+        words = ",".join(features.words)
+        lemmas = ",".join(features.lemmas)
+        hypernyms = ",".join(features.hypernyms)
+        hyponyms = ",".join(features.hyponyms)
+        stems = ",".join(features.stems)
 
-'''
-query = "entity_labels_list:("+",".join(req_entity_type)+" )^20 AND ((word_tokens:"+word_tokens+")^20 OR (lemmatize_word:"+ lemmatize_word+")^10 OR (synonymns_list:"+synonymns_list+")^10 OR \
-        (hypernyms_list:"+hypernyms_list+") OR (hyponyms_list:"+hyponyms_list+") OR (stemmatize_word:"+stemmatize_word+")^10 AND (entities_list:"+entities_list+")^20)"
+        query = "(words:"+words+")^20 OR (lemmas:"+lemmas+")^10 OR \
+                (hypernyms:"+hypernyms+")^20 OR (hyponyms:"+hyponyms+")^20 OR (stems:"+stems+")^10"
 
-results = solr.search(q=query,start=0, rows=10)
+        results = solr.search(q=query,start=0, rows=10)
 
-print("Saw {0} result(s).".format(len(results)))
-for result in results:
-    print("The article id is '{0}'.".format(result['id']))
-'''
+        print("Saw {0} result(s).".format(len(results)))
+        for result in results:
+            print("Answer sentence: {0}".format(result["sentence"]))
+            print("The article's id is '{0}'.\n".format(result["id"].split("_")[0]))
