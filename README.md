@@ -1,4 +1,4 @@
-# CS6320_Project\
+# CS6320_Project
 Team Name:\
 Entropy
 
