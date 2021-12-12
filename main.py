@@ -36,7 +36,7 @@ def processQueries(question_path):
         question_list = f.read().splitlines()
 
         for question in question_list:
-            print("\nQuestion: {0}".format(question))
+            #print("\nQuestion: {0}".format(question))
 
             entity_type = []
             question_LC = question.lower()
