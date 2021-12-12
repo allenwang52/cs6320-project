@@ -13,7 +13,7 @@ $ pip install --user -U pip setuptools wheel\
 $ pip install spacy\
 $ python -m spacy download en_core_web_sm
 
-Manually install Apache Solr: https://archive.apache.org/dist/lucene/solr/8.0.0/\
+Manually install Apache Solr: https://archive.apache.org/dist/lucene/solr/8.0.0/ \
 cd to the installed directory\
 $ bin\solr start\
 $ bin\solr create -c final1 -p 8983
