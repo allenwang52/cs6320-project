@@ -18,5 +18,7 @@ cd to the installed directory\
 $ bin\solr start\
 $ bin\solr create -c entropy -p 8983
 
-Run solr_indexer.py to populate Apache Solr with entries\
-Run main.py to query
+To populate Apache Solr with entries:\
+$ py solr_indexer.py\
+To start querying on questions:\
+$ py main.py <question_file_path>
