@@ -41,7 +41,6 @@ for file in os.listdir():
             for sentence in article:
                 features = feature_extraction.get_features(id, sentence)
                 article_features.append(NLPFeatures(features.id, features.words, features.sentence, features.lemmas, features.stems, features.tags, features.parse_tree, features.hypernyms, features.hyponyms, features.meronyms, features.holonyms))
-    break
 
 article_info = [dict() for x in range(len(article_features))]
 for i, article in enumerate(article_features):
