@@ -40,8 +40,9 @@ for file in os.listdir():
             article = sent_tokenize(f.read())
             for sentence in article:
                 features = feature_extraction.get_features(id, sentence)
-                article_features.append(NLPFeatures(features.id, features.words, features.sentence, features.lemmas, features.stems, features.tags, features.parse_tree, features.hypernyms, features.hyponyms, features.meronyms, features.holonyms))
-    break
+                article_features.append(NLPFeatures(features.id, features.words, features.sentence, features.lemmas, features.stems, features.tags,
+                                                    features.parse_tree, features.hypernyms, features.hyponyms, features.meronyms, features.holonyms,
+                                                    features.synonymns, features.rootOfSentence, features.entities, features.entity_labels))
 
 article_info = [dict() for x in range(len(article_features))]
 for i, article in enumerate(article_features):
@@ -56,5 +57,10 @@ for i, article in enumerate(article_features):
     article_info[i]["hyponyms"] = article.hyponyms
     article_info[i]["meronyms"] = article.meronyms
     article_info[i]["holonyms"] = article.holonyms
+    article_info[i]["rootOfSentence"] = article.rootOfSentence
+    article_info[i]["synonymns"] = article.synonymns
+    article_info[i]["entities"] = article.entities
+    article_info[i]["entity_labels"] = article.entity_labels
 
 solr.add(article_info, commit=True)
+print("\nIndexing completed")

@@ -42,12 +42,16 @@ def get_features(id, sentence):
     for word in words:
         for synset in wn.synsets(word):
             for s in synset.hypernyms():
-                hypernyms.extend(s.lemma_names())
+                if s.lemma_names() not in hypernyms:
+                    hypernyms.extend(s.lemma_names())
             for s in synset.hyponyms():
-                hyponyms.extend(s.lemma_names())
+                if s.lemma_names() not in hyponyms:
+                    hyponyms.extend(s.lemma_names())
             for s in synset.part_meronyms():
-                meronyms.extend(s.lemma_names())
+                if s.lemma_names() not in meronyms:
+                    meronyms.extend(s.lemma_names())
             for s in synset.part_holonyms():
-                holonyms.extend(s.lemma_names())
+                if s.lemma_names() not in holonyms:
+                    holonyms.extend(s.lemma_names())
 
     return NLPFeatures(id, words, sentence, lemmas, stems, tags, dependency_parse_tree, hypernyms, hyponyms, meronyms, holonyms)
