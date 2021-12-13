@@ -22,3 +22,7 @@ To populate Apache Solr with entries:\
 $ py solr_indexer.py\
 To start querying on questions:\
 $ py main.py <question_file_path>
+
+Once done:
+$ bin\solr stop -all
+$ bin\solr delete -c entropy
