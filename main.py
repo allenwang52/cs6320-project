@@ -89,7 +89,7 @@ def processQueries(question_path):
             with open("result.csv", "a", newline='', encoding='utf8') as csvFile:
                 if len(results) != 0:
                     wr = csv.writer(csvFile)
-                    wr.writerow([question, list(results)[0]["sentence"][0], str(list(results)[0]["id"].split("_")[0])])
+                    wr.writerow([question, str(list(results)[0]["id"].split("_")[0]), list(results)[0]["sentence"][0]])
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
