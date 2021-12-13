@@ -3,8 +3,8 @@ Team Name:\
 Entropy
 
 Team Members:\
-Allen Wang\
-Shanjida Khatun
+Shanjida Khatun (sxk200130@utdallas.edu)\
+Allen Wang (axw161630@utdallas.edu)
 
 How to access project demo:\
 $ pip install nltk\
